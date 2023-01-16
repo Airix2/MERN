@@ -24,13 +24,14 @@ export const getDashboardStats = async (req, res) => {
 
 		// Overall stats
 		const overallStat = await OverallStat.find({ year: currentYear });
+		// console.log(overallStat);
 		const {
 			totalCustomers,
 			yearlyTotalSoldUnits,
 			yearlySalesTotal,
 			monthlyData,
 			salesByCategory,
-		} = overallStat;
+		} = overallStat[0];
 		const thisMonthStats = overallStat[0].monthlyData.find(({ month }) => {
 			return month === currentMonth;
 		});
